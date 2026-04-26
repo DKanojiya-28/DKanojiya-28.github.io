@@ -8,47 +8,53 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+:root {
+    --bg: #0f172a;
+    --card: rgba(255,255,255,0.05);
+    --text: white;
+}
+
+.light {
+    --bg: #f5f5f5;
+    --card: white;
+    --text: black;
 }
 
 body {
+    margin: 0;
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #0f172a, #1e293b);
-    color: white;
+    background: var(--bg);
+    color: var(--text);
+    transition: 0.4s;
 }
 
-/* NAVBAR */
+/* NAV */
 nav {
     display: flex;
     justify-content: space-between;
-    padding: 20px 50px;
-    background: rgba(0,0,0,0.7);
+    padding: 20px 40px;
+    background: rgba(0,0,0,0.6);
     position: sticky;
     top: 0;
 }
 
-nav h2 {
-    color: #38bdf8;
-}
-
 nav a {
-    color: white;
-    margin-left: 20px;
+    color: var(--text);
+    margin-left: 15px;
     text-decoration: none;
 }
 
 /* HERO */
 header {
     text-align: center;
-    padding: 120px 20px;
-    animation: fadeIn 2s ease;
+    padding: 100px 20px;
+    animation: fadeIn 1.5s ease;
 }
 
-header h1 {
-    font-size: 50px;
+header img {
+    width: 130px;
+    border-radius: 50%;
+    margin-bottom: 15px;
 }
 
 header span {
@@ -57,68 +63,61 @@ header span {
 
 /* SECTION */
 .section {
-    padding: 60px 20px;
+    padding: 50px 20px;
     text-align: center;
 }
 
 /* CARD */
 .card {
-    background: rgba(255,255,255,0.05);
-    backdrop-filter: blur(10px);
+    background: var(--card);
     margin: 20px auto;
     padding: 25px;
     border-radius: 15px;
     width: 65%;
-    transition: 0.4s;
+    transition: 0.3s;
 }
 
 .card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-8px);
 }
 
-/* BUTTON */
-.btn {
-    display: inline-block;
-    margin: 8px;
-    padding: 10px 20px;
-    background: #38bdf8;
-    color: black;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-/* SKILLS GRID */
-.skills {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
+/* SKILLS */
 .skills span {
     background: #1e293b;
     margin: 5px;
     padding: 8px 12px;
     border-radius: 6px;
+    display: inline-block;
 }
 
-/* FOOTER */
-footer {
-    text-align: center;
-    padding: 20px;
+/* BUTTON */
+.btn {
+    padding: 10px 20px;
+    background: #38bdf8;
+    color: black;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-block;
+    margin: 5px;
+}
+
+/* TOGGLE */
+.toggle {
+    cursor: pointer;
+    background: #38bdf8;
+    padding: 5px 10px;
+    border-radius: 6px;
 }
 
 /* ANIMATION */
 @keyframes fadeIn {
-    from {opacity: 0; transform: translateY(30px);}
+    from {opacity: 0; transform: translateY(20px);}
     to {opacity: 1; transform: translateY(0);}
 }
 
 /* MOBILE */
 @media (max-width: 768px) {
-    .card {
-        width: 90%;
-    }
+    .card { width: 90%; }
 }
 </style>
 </head>
@@ -131,11 +130,15 @@ footer {
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#achievements">Achievements</a>
         <a href="#contact">Contact</a>
+        <span class="toggle" onclick="toggleMode()">☀️/🌙</span>
     </div>
 </nav>
 
 <header>
+    <img src="https://via.placeholder.com/130" alt="Profile Photo">
     <h1>Hi, I'm <span>Dhanshree Kanojiya</span> 👩‍💻</h1>
     <p>Full Stack Developer | Problem Solver | Tech Enthusiast</p>
 </header>
@@ -143,18 +146,15 @@ footer {
 <section id="about" class="section">
     <h2>About Me</h2>
     <div class="card">
-        <p>
-            I am a Computer Engineering student passionate about building real-world applications 
-            using web technologies and programming. I enjoy solving problems, exploring new tools, 
-            and working on innovative projects like IoT systems and data-driven applications.
-        </p>
+        <p>I am a Computer Engineering student passionate about building real-world applications using web technologies, IoT, and data-driven solutions. I enjoy solving problems and continuously learning new technologies.</p>
     </div>
 </section>
 
 <section id="skills" class="section">
     <h2>Skills</h2>
     <div class="card skills">
-        <span>Python</span><span>C</span><span>C++</span><span>Java</span><span>PHP</span><span>SQL</span><span>JavaScript</span>
+        <span>Python</span><span>C</span><span>C++</span><span>Java</span>
+        <span>PHP</span><span>SQL</span><span>JavaScript</span>
         <span>React</span><span>Node.js</span><span>MongoDB</span>
         <span>NumPy</span><span>Pandas</span><span>Matplotlib</span>
         <span>Git</span><span>GitHub</span><span>VS Code</span>
@@ -166,30 +166,51 @@ footer {
     <h2>Projects</h2>
 
     <div class="card">
-        <h3>Gas Leak Detection & Prevention System</h3>
-        <p>
-            Built an IoT-based safety system using ESP32 and MQ2 sensors to detect gas leaks 
-            and automatically activate sprinkler systems to prevent hazards.
-        </p>
-        <p><b>Tech:</b> ESP32, MQ2 Sensor, IoT</p>
+        <h3>Gas Leak Detection & Prevention</h3>
+        <p>IoT-based system using ESP32 and MQ2 sensors to detect gas leaks and trigger safety mechanisms.</p>
     </div>
 
     <div class="card">
         <h3>Resume Parser</h3>
-        <p>
-            Developed a system to extract and analyze resume data using Python and web technologies 
-            for efficient candidate screening and data processing.
-        </p>
-        <p><b>Tech:</b> HTML, CSS, JavaScript, Python</p>
+        <p>Extracts and analyzes resume data using Python and web technologies for efficient recruitment.</p>
     </div>
 
     <div class="card">
-        <h3>FabriTrack – Inventory Management System</h3>
-        <p>
-            Designed and developed a website for Sarita Industries with inventory management features 
-            to track stock, manage records, and improve operational efficiency.
-        </p>
-        <p><b>Tech:</b> HTML, CSS, JavaScript, PHP, MySQL</p>
+        <h3>FabriTrack</h3>
+        <p>Inventory management system with website interface for business operations.</p>
+    </div>
+
+</section>
+
+<section id="education" class="section">
+    <h2>Education</h2>
+
+    <div class="card">
+        <h3>B.E. Computer Engineering</h3>
+        <p>Pimpri Chinchwad College of Engineering</p>
+        <p>2024 – 2027 | CGPA: 8.9</p>
+    </div>
+
+    <div class="card">
+        <h3>Diploma in Computer Engineering</h3>
+        <p>R. C. Patel Polytechnic</p>
+        <p>2021 – 2024 | 91.6%</p>
+    </div>
+
+    <div class="card">
+        <h3>SSC</h3>
+        <p>Janta High School</p>
+        <p>2021 | 94.80%</p>
+    </div>
+
+</section>
+
+<section id="achievements" class="section">
+    <h2>Achievements / Certifications</h2>
+
+    <div class="card">
+        <p>✔ Completed "Data Structures using C++" – Udemy</p>
+        <p>✔ 45 Days Industrial Training in Frontend Development (iTech Systems, Nashik)</p>
     </div>
 
 </section>
@@ -200,13 +221,15 @@ footer {
         <p>Email: dhanashrikanojiya31@gmail.com</p>
         <a href="https://github.com/DKanojiya-28" class="btn">GitHub</a>
         <a href="https://leetcode.com/u/hQT5dhn6Wg/" class="btn">LeetCode</a>
-        <a href="https://drive.google.com/file/d/1rPsRYr25Ka3RMYN83IzuK_mSLbTafKtO/view" class="btn">Download Resume</a>
+        <a href="https://drive.google.com/file/d/1rPsRYr25Ka3RMYN83IzuK_mSLbTafKtO/view" class="btn">Resume</a>
     </div>
 </section>
 
-<footer>
-    <p>© 2026 Dhanshree Kanojiya</p>
-</footer>
+<script>
+function toggleMode() {
+    document.body.classList.toggle("light");
+}
+</script>
 
 </body>
 </html>
