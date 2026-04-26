@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dhanashri Portfolio</title>
+<title>Dhanshree Kanojiya Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
 * {
@@ -13,10 +15,9 @@
 }
 
 body {
-    font-family: 'Segoe UI', sans-serif;
-    background: #0f172a;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
     color: white;
-    scroll-behavior: smooth;
 }
 
 /* NAVBAR */
@@ -24,7 +25,7 @@ nav {
     display: flex;
     justify-content: space-between;
     padding: 20px 50px;
-    background: rgba(2,6,23,0.9);
+    background: rgba(0,0,0,0.7);
     position: sticky;
     top: 0;
 }
@@ -43,6 +44,7 @@ nav a {
 header {
     text-align: center;
     padding: 120px 20px;
+    animation: fadeIn 2s ease;
 }
 
 header h1 {
@@ -61,34 +63,55 @@ header span {
 
 /* CARD */
 .card {
-    background: #1e293b;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
     margin: 20px auto;
     padding: 25px;
-    border-radius: 12px;
-    width: 60%;
-    transition: 0.3s;
+    border-radius: 15px;
+    width: 65%;
+    transition: 0.4s;
 }
 
 .card:hover {
-    transform: scale(1.05);
+    transform: translateY(-10px);
 }
 
 /* BUTTON */
 .btn {
     display: inline-block;
-    margin-top: 10px;
+    margin: 8px;
     padding: 10px 20px;
     background: #38bdf8;
     color: black;
-    border-radius: 6px;
+    border-radius: 8px;
     text-decoration: none;
+    font-weight: bold;
+}
+
+/* SKILLS GRID */
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.skills span {
+    background: #1e293b;
+    margin: 5px;
+    padding: 8px 12px;
+    border-radius: 6px;
 }
 
 /* FOOTER */
 footer {
     text-align: center;
     padding: 20px;
-    background: #020617;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(30px);}
+    to {opacity: 1; transform: translateY(0);}
 }
 
 /* MOBILE */
@@ -106,20 +129,36 @@ footer {
     <h2>DK</h2>
     <div>
         <a href="#about">About</a>
+        <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
     </div>
 </nav>
 
 <header>
-    <h1>Hi, I'm <span>Dhanashri</span> 👩‍💻</h1>
-    <p>Computer Engineering Student | Web Developer</p>
+    <h1>Hi, I'm <span>Dhanshree Kanojiya</span> 👩‍💻</h1>
+    <p>Full Stack Developer | Problem Solver | Tech Enthusiast</p>
 </header>
 
 <section id="about" class="section">
     <h2>About Me</h2>
     <div class="card">
-        <p>I am passionate about building websites and solving real-world problems using technology.</p>
+        <p>
+            I am a Computer Engineering student passionate about building real-world applications 
+            using web technologies and programming. I enjoy solving problems, exploring new tools, 
+            and working on innovative projects like IoT systems and data-driven applications.
+        </p>
+    </div>
+</section>
+
+<section id="skills" class="section">
+    <h2>Skills</h2>
+    <div class="card skills">
+        <span>Python</span><span>C</span><span>C++</span><span>Java</span><span>PHP</span><span>SQL</span><span>JavaScript</span>
+        <span>React</span><span>Node.js</span><span>MongoDB</span>
+        <span>NumPy</span><span>Pandas</span><span>Matplotlib</span>
+        <span>Git</span><span>GitHub</span><span>VS Code</span>
+        <span>DBMS</span><span>OOP</span><span>DSA</span>
     </div>
 </section>
 
@@ -127,15 +166,30 @@ footer {
     <h2>Projects</h2>
 
     <div class="card">
-        <h3>Gas Leak Detection System</h3>
-        <p>IoT-based safety system</p>
-        <a href="#" class="btn">View Project</a>
+        <h3>Gas Leak Detection & Prevention System</h3>
+        <p>
+            Built an IoT-based safety system using ESP32 and MQ2 sensors to detect gas leaks 
+            and automatically activate sprinkler systems to prevent hazards.
+        </p>
+        <p><b>Tech:</b> ESP32, MQ2 Sensor, IoT</p>
     </div>
 
     <div class="card">
-        <h3>Frontend Web Projects</h3>
-        <p>HTML, CSS designs</p>
-        <a href="#" class="btn">View Project</a>
+        <h3>Resume Parser</h3>
+        <p>
+            Developed a system to extract and analyze resume data using Python and web technologies 
+            for efficient candidate screening and data processing.
+        </p>
+        <p><b>Tech:</b> HTML, CSS, JavaScript, Python</p>
+    </div>
+
+    <div class="card">
+        <h3>FabriTrack – Inventory Management System</h3>
+        <p>
+            Designed and developed a website for Sarita Industries with inventory management features 
+            to track stock, manage records, and improve operational efficiency.
+        </p>
+        <p><b>Tech:</b> HTML, CSS, JavaScript, PHP, MySQL</p>
     </div>
 
 </section>
@@ -143,12 +197,15 @@ footer {
 <section id="contact" class="section">
     <h2>Contact</h2>
     <div class="card">
-        <p>Email: your-email@gmail.com</p>
+        <p>Email: dhanashrikanojiya31@gmail.com</p>
+        <a href="https://github.com/DKanojiya-28" class="btn">GitHub</a>
+        <a href="https://leetcode.com/u/hQT5dhn6Wg/" class="btn">LeetCode</a>
+        <a href="https://drive.google.com/file/d/1rPsRYr25Ka3RMYN83IzuK_mSLbTafKtO/view" class="btn">Download Resume</a>
     </div>
 </section>
 
 <footer>
-    <p>© 2026 Dhanashri</p>
+    <p>© 2026 Dhanshree Kanojiya</p>
 </footer>
 
 </body>
